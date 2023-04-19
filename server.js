@@ -1,3 +1,4 @@
+const http = require("http")
 const cookieParser = require("cookie-parser");
 const csrf = require("csurf");
 const bodyParser = require("body-parser");
@@ -5,6 +6,8 @@ const express = require("express");
 const admin = require("firebase-admin");
 const fire = require("firebase/app");
 const db = require("firebase/database")
+
+const hostname = "0.0.0.0"
 
 const serviceAccount = require("./serviceAccountKey.json");
 
@@ -28,6 +31,12 @@ app.use(express.static('css') , express.static('js'));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(csrfMiddleware);
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader("Content-Type, text/plain")
+  res.end("Zeet Node")
+})
 
 app.all("*", (req, res, next) => {
   res.cookie("XSRF-TOKEN", req.csrfToken());
