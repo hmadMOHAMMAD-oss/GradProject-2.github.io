@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "61100044378",
+    "firebase_url": "https://pocket-pharmacy-1146d-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "pocket-pharmacy-1146d",
+    "storage_bucket": "pocket-pharmacy-1146d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:61100044378:android:645d193582e9edf960a863",
+        "android_client_info": {
+          "package_name": "com.example.grad_project_alpha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "61100044378-bk57nhgas897ptrrqv9o2gb3qb8r1bjg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.grad_project_alpha",
+            "certificate_hash": "7889c94494688486d3383513ce2d0b6a4f1cdfb8"
+          }
+        },
+        {
+          "client_id": "61100044378-7phs3q2p0eukhd0eam65d8sde8klqbsk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2dMYll8i990R5oWcg9MK16fr8NdKRids"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "61100044378-7phs3q2p0eukhd0eam65d8sde8klqbsk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

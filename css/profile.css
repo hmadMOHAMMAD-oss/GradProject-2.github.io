@@ -1,0 +1,260 @@
+/* NAV-BAR-STYLE ---START--- */
+:root {
+    --blue-font: #50BDC9;
+    --red-font: #FF8980;
+    --nav-color: #6edbe79d;
+    --border-radius: 10px;
+    --color-bg: #fff;
+    --line-height: 150%;
+    --hover-brightness: 1.2;
+    --DGreen-BackGround: #95D3C8;
+    --WGreen-BackGround: #DFEEEB;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+body{
+    margin: auto;
+    background-image: url("meds.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+a {
+    text-decoration: none;
+    color: var(--blue-fontfont);
+}
+
+.nav {
+    padding: 10px 10px 10px 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    background: #dfeeebb7;
+}
+
+
+h2 {
+    margin-top: 10px;
+    color: var(--blue-font);
+    display: inline;
+}
+
+.spanR {
+    color: #FF8980;
+    font-weight: bold;
+}
+
+.sections {
+    margin-top: 5px;
+    float: right;
+    color: var(--blue-font);
+    font-weight: bold;
+    font-size: large;
+}
+
+.section {
+    padding: 5px;
+    margin-right: 5px;
+}
+
+.section:hover {
+    color: var(--red-font);
+}
+
+.sectionsActive {
+    color: var(--red-font);
+    text-shadow: 1px 1px 3px var(--red-font);
+}
+
+/* NAV-BAR-STYLE ---END--- */
+
+.searchForm {
+    background-color: var(--DGreen-BackGround);
+    max-width: 390px;
+    max-height: 200px;
+    margin-top: 200px;
+    margin-left: 550px;
+    padding: 20px;
+    opacity: 0.8;
+    border-radius: var(--border-radius);
+}
+
+.searchForm:c {
+    background-color: black;
+}
+
+.searchInput {
+    border: 2px solid var(--WGreen-BackGround);
+    border-radius: var(--border-radius);
+    font-family: var(--font);
+    height: 45px;
+    width: 190px;
+    color: black;
+}
+.searchInput:hover {
+    cursor: pointer;
+    color: white;
+    background-color: var(--nav-color);
+    filter: brightness(var(--hover-brightness));
+}
+
+.searchButton {
+    float: right;
+    margin-right: 20px;
+    height: 50px;
+    width: 120px;
+    border-radius: var(--border-radius);
+    margin-left: 50px;
+    font-size: x-large;
+    font-weight: bold;
+    font-family: var(--font);
+    background-color: white;
+    border: 3px solid var(--nav-color);
+    color: var(--nav-color);
+}
+
+.searchButton:hover {
+    cursor: pointer;
+    color: white;
+    background-color: var(--nav-color);
+    filter: brightness(var(--hover-brightness));
+}
+
+#one{
+    margin-bottom: 20px;
+}
+
+.BarCodeGenerator{
+    color:  white;
+    font-size: large;
+    font-weight: bold;
+}
+
+
+/* --------- Information Div --------- */
+#imgURL{
+    max-width: 100px;
+}
+
+.addMeds{
+    background-color: var(--DGreen-BackGround);
+    margin-top: 50px;
+    margin-left: 250px;
+    width: 990px;
+    height: 730px;
+    padding: 20px;
+    border: solid var(--WGreen-BackGround);
+    border-radius: 10px;
+    opacity: 0.9;
+}
+label{
+    color: white;
+    font-size: larger;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.input{
+    height: 30px;
+    width: 200px;
+    margin-top: 7px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--WGreen-BackGround);
+}
+
+.input:hover {
+    cursor: pointer;
+    color: white;
+    background-color: var(--nav-color);
+    filter: brightness(var(--hover-brightness));
+}
+.input:focus{
+    border: 5px solid var(--nav-color);
+}
+
+#ImageURL{
+    margin-left: 15px;
+} 
+#BarCode {
+    margin-left: 28px;
+}
+#Name{
+    margin-left: 58px;
+}
+.Dosage{
+    width: 180px;
+    margin-left: 0px;
+}
+#Warnnings{
+    margin-left: 18px;
+}
+#Pregnancy{
+    margin-left: 18px;
+}
+#Usage {
+    margin-left: 55px;
+}
+#Chemical{
+    margin-left: 25px;
+}
+#SideEffect{
+    margin-left: 18px;
+}
+#Consetration{
+    margin-right: 15px;
+}
+
+.Modify{
+    float: right;
+    margin-right: 20px;
+    height: 60px;
+    width: 100px;
+    border-radius: var(--border-radius);
+    margin-left: 50px;
+    font-size: x-large;
+    font-weight: bold;
+    font-family: var(--font);
+    background-color: white;
+    border: 3px solid var(--nav-color);
+    color: var(--nav-color);
+}
+
+.Modify:hover {
+    cursor: pointer;
+    color: white;
+    background-color: var(--nav-color);
+    filter: brightness(var(--hover-brightness));
+}
+
+.Deleat{
+    float: right;
+    margin-right: 20px;
+    height: 60px;
+    width: 100px;
+    border-radius: var(--border-radius);
+    margin-left: 50px;
+    font-size: x-large;
+    font-weight: bold;
+    font-family: var(--font);
+    background-color: var(--red-font);
+    border: 3px solid var(--nav-color);
+    color: white;
+}
+.Deleat:hover {
+    cursor: pointer;
+    color: white;
+    background-color: var(--red-font);
+    filter: brightness(var(--hover-brightness));
+}
+.display{
+    display: none;
+}
+
+.border{
+    border: solid greenyellow 5px 5px 5px 5px;
+    border-radius: 10px;
+}
+
+.red:hover{
+    background-color: #FF8980;
+}

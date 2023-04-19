@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Firebase Server Auth</title>
+  <!-- CSS LINK -->
+  <link rel="stylesheet" href="/profile.css" />
+  <!-- FontWesome -->
+  <script src="https://kit.fontawesome.com/08d515a87b.js" crossorigin="anonymous"></script>
+  <!-- FIRE BASE CONNECTION -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+</head>
+
+<body>
+  <nav class="nav">
+    <h2 class="er modal"><span class="spanR">P</span>ocket <span class="spanR">P</span>harmacy</h2>
+
+    <div class="sections">
+      <span class="section"> <a href="/Profile">Home</a> </span>
+      <span class="section">
+        <a href="/addMeds">Add Medicine</a></span>
+      <span class="section">
+        <a href="/sessionLogout" class="log">Log out
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> </a>
+      </span>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Searcher Div -->
+    <div class="searchForm">
+      <input class="searchInput " id="one" type="text" name="searchForm" placeholder="Search For medicin Name" />
+      <button class="searchButton onName">Search</button>
+
+      <p class="BarCodeGenerator display">BarCode : <span class="copySpan">18429458</span> </p>
+
+      <input class="searchInput" id="two" type="text" name="searchForm" placeholder="Search For medicin BarCode" />
+      <button class="searchButton OnBarCode">Search</button>
+    </div>
+
+    <!-- Information Div -->
+    <div class="addMeds">
+      <form action="/action_page.php">
+        <img src="" alt="https://t4.ftcdn.net/jpg/04/99/93/31/360_F_499933117_ZAUBfv3P1HEOsZDrnkbNCt4jc3AodArl.jpg"
+          id="imgURL"> <br>
+        <label for="fname">Bar Code :</label>
+        <input type="text" disabled id="BarCode" class="input red" name="fname" placeholder="Bar Code"><br><br>
+        <label for="fname">Name :</label>
+        <input type="text" disabled id="Name" class="input red" name="fname" placeholder="Name"><br><br>
+        <label for="fname">Image URL :</label>
+        <input type="text" id="ImageURL" class="input" name="fname" placeholder="Image URL"><br><br>
+        <label for="fname">Consetration :</label>
+        <input type="text" id="Consetration" class="input" name="fname" placeholder="Consetration"><br><br>
+        <label for="fname">Side Effect :</label>
+        <input type="text" id="SideEffect" class="input" name="fname" placeholder="Side Effect"><br><br>
+        <label for="fname">Dosage :</label><br>
+        <label for="fname">Adilt :</label>
+        <input type="text" class="Dosage input" id="DosageA" name="fname" placeholder="Adult">
+        <label for="fname">Children :</label>
+        <input type="text" class="Dosage input" id="DosageC" name="fname" placeholder="Child">
+        <label for="fname">Under Children :</label>
+        <input type="text" class="Dosage input" id="DosageUC" name="fname" placeholder="Under Child"><br><br>
+
+        <label for="fname">Warnnings :</label>
+        <input type="text" id="Warnnings" class="input" name="fname" placeholder="Warnnings"><br><br>
+        <label for="fname">Pregnancy :</label>
+        <input type="text" id="Pregnancy" class="input" name="fname" placeholder="Pregnancy"><br><br>
+        <label for="fname">Usage :</label>
+        <input type="text" id="Usage" class="input" name="fname" placeholder="Usage"><br><br>
+        <label for="fname">Chemical :</label>
+        <input type="text" id="Chemical" class="input" name="fname" placeholder="Chemical">
+      </form>
+      <button class="Modify"> Modify </button>
+      <button class="Deleat"> Deleat </button>
+    </div>
+  </main>
+
+  <!-- JS Connections -->
+  <script src="/Profile.js"> </script>
+  <!-- Fire_Base Connections -->
+  <script>
+    document.querySelector(".addMeds").classList.add("display");
+    const firbaseAppSite = {
+      apiKey: "AIzaSyB2dMYll8i990R5oWcg9MK16fr8NdKRids",
+      databaseURL: "https://pocket-pharmacy-1146d-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "pocket-pharmacy-1146d",
+      storageBucket: "pocket-pharmacy-1146d.appspot.com",
+      messagingSenderId: "61100044378",
+      appId: "1:61100044378:android:645d193582e9edf960a863",
+    };
+    const firebaseConfig = {
+      apiKey: "AIzaSyCRBlBSaOotcyp2ogXhNcbeiFQC74FGDmA",
+      authDomain: "adminsite-e9b68.firebaseapp.com",
+      databaseURL: "https://adminsite-e9b68-default-rtdb.firebaseio.com",
+      projectId: "adminsite-e9b68",
+      storageBucket: "adminsite-e9b68.appspot.com",
+      messagingSenderId: "448337078221",
+      appId: "1:448337078221:web:3ac9c8c711a947b8468684",
+    };
+    firebase.initializeApp(firbaseAppSite);
+
+    // ------- Search Meds BarCode -------
+    document.querySelector(".onName").addEventListener('click', () => {
+      const Name = document.getElementById('one').value;
+      const firebaseRef = firebase.database().ref('MedsName/' + Name);
+
+      firebaseRef.on('value', (snapshot) => {
+        const data = snapshot.val();
+        BarB = data.BarCode
+        console.log(data.MedsName)
+
+        document.getElementById('two').value = data.BarCode
+        var copyText = document.getElementById("one");
+        navigator.clipboard.writeText(data.BarCode);
+        alert("Copied the text: " + data.BarCode);
+
+
+        if (BarB != undefined) {
+          // ------- Search Meds Information -------
+          document.querySelector(".OnBarCode").addEventListener('click', () => {
+            document.querySelector(".searchForm").classList.toggle("display");
+            document.querySelector(".addMeds").classList.toggle("display");
+
+
+            const Bar = document.getElementById('two').value;
+            const firebaseRef = firebase.database().ref('medLibrary/' + Bar);
+
+            firebaseRef.on('value', (snapshot) => {
+              const data = snapshot.val();
+              console.log(data.BarCode)
+
+              document.getElementById("imgURL").setAttribute('src', data.image)
+              document.getElementById('ImageURL').value = data.image
+              document.getElementById('BarCode').value = data.BarCode
+              document.getElementById('Name').value = data.name
+              document.getElementById('SideEffect').value = data.sideEffects
+              document.getElementById('DosageA').value = data.dosage.adult
+              document.getElementById('DosageC').value = data.dosage.child
+              document.getElementById('DosageUC').value = data.dosage.underChild
+              document.getElementById('Warnnings').value = data.Warnings
+              document.getElementById('Pregnancy').value = data.Pregnancy
+              document.getElementById('Usage').value = data.usage
+              document.getElementById('Chemical').value = data.chemicalComponents
+              document.getElementById('Consetration').value = data.concentration
+            })
+          })
+        }
+      })
+    })
+
+    // ------- Modify Meds Information -------
+    document.querySelector(".Modify").addEventListener('click', () => {
+      const URLL = document.getElementById('ImageURL').value;
+      const BarCode = document.getElementById('BarCode').value;
+      const Name = document.getElementById('Name').value;
+      const SideEffect = document.getElementById('SideEffect').value;
+      const DosageA = document.getElementById('DosageA').value;
+      const DosageC = document.getElementById('DosageC').value;
+      const DosageUC = document.getElementById('DosageUC').value;
+      const Warnnings = document.getElementById('Warnnings').value;
+      const Pregnancy = document.getElementById('Pregnancy').value;
+      const Usage = document.getElementById('Usage').value;
+      const Chemical = document.getElementById('Chemical').value;
+      const Consetration = document.getElementById('Consetration').value;
+      const arr = [URLL, BarCode, Name, SideEffect, DosageA, DosageC, DosageUC, Warnnings, Pregnancy, Usage,
+        Chemical, Consetration];
+
+      for (let i = 1; i < 11; i++) {
+        if (arr[i] === "") arr[i] = "null"
+      }
+
+      const firebaseRefMedsInfo = firebase.database().ref('medLibrary/' + BarCode);
+      firebaseRefMedsInfo.set({
+        "image" : arr[0],
+        "BarCode" : arr[1],
+        "name" : arr[2],
+        "sideEffects" : arr[3],
+        "dosage" : {
+          "adult" : arr[4],
+          "child" : arr[5],
+          "underChild" : arr[6]
+        },
+          "Warnings" : arr[7],
+          "Pregnancy" : arr[8],
+          "usage" : arr[9],
+          "chemicalComponents" : arr[10],
+          "concentration" : arr[11]
+      })
+      const firebaseRefMedsName = firebase.database().ref('MedsName/' + Name);
+      firebaseRefMedsName.set({
+        "BarCode": arr[1],
+        "name": arr[2]
+      })
+      window.alert(`medicine Iformation Modified`)
+    })
+
+    // ------- Deleat Meds Information -------
+    document.querySelector(".Deleat").addEventListener('click', () => {
+      const Name = document.getElementById('Name').value;
+      console.log(Name)
+      const firebaseRef = firebase.database().ref('MedsName/' + Name);
+
+      firebaseRef.on('value', (snapshot) => {
+        const data = snapshot.val();
+        firebase.database().ref('medLibrary/' + data.BarCode).remove();
+        firebase.database().ref('MedsName/' + name).remove();
+      })
+      window.alert(`medicine Iformation Deleated`)
+      document.getElementById('ImageURL').value = " "
+      document.getElementById('BarCode').value = " "
+      document.getElementById('Name').value = " "
+      document.getElementById('SideEffect').value = " "
+      document.getElementById('DosageA').value = " "
+      document.getElementById('DosageC').value = " "
+      document.getElementById('DosageUC').value = " "
+      document.getElementById('Warnnings').value = " "
+      document.getElementById('Pregnancy').value = " "
+      document.getElementById('Usage').value = " "
+      document.getElementById('Chemical').value = " "
+      document.getElementById('Consetration').value = " "
+    })
+
+  </script>
+</body>
+
+</html>
